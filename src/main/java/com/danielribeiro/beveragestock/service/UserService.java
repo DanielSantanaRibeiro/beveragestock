@@ -1,5 +1,6 @@
 package com.danielribeiro.beveragestock.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,8 @@ public class UserService {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(()->new ObjectNotFoundException("Objeto nao enontrado! ID: " + id + ", Tipo:" + User.class.getName()));
 	}
-
+	
+	public List<User> findAll() {
+		return repo.findAll();
+	}
 }
