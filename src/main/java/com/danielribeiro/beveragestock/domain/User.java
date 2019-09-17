@@ -31,12 +31,14 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 		
-	public int getID() {
+	public Integer getId() {
 		return id;
 	}
-	public void setID(int iD) {
-		id = iD;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
