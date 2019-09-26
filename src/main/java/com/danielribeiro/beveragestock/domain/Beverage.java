@@ -15,7 +15,7 @@ public class Beverage implements Serializable {
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer Id;
+	private Integer id;
 	private String name;
 	private Integer type;
 
@@ -25,17 +25,17 @@ public class Beverage implements Serializable {
 
 	public Beverage(Integer id, String name, BeverageType type) {
 		super();
-		Id = id;
+		this.id = id;
 		this.name = name;
 		this.type = (type == null) ? null : type.getCod();
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
@@ -58,7 +58,7 @@ public class Beverage implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -71,10 +71,10 @@ public class Beverage implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Beverage other = (Beverage) obj;
-		if (Id == null) {
-			if (other.Id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!Id.equals(other.Id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

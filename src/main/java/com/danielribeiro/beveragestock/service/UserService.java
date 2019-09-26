@@ -20,7 +20,7 @@ public class UserService {
 
 	public User find(Integer id){
 		Optional<User> obj = repo.findById(id);
-		return obj.orElseThrow(()->new ObjectNotFoundException("Objeto nao enontrado! ID: " + id + ", Tipo:" + User.class.getName()));
+		return obj.orElseThrow(()->new ObjectNotFoundException("Object not found! ID: " + id + ", Type:" + User.class.getName()));
 	}
 	
 	public List<User> findAll() {
