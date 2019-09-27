@@ -8,10 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.danielribeiro.beveragestock.domain.Beverage;
+import com.danielribeiro.beveragestock.domain.Section;
 import com.danielribeiro.beveragestock.domain.Tun;
 import com.danielribeiro.beveragestock.domain.User;
 import com.danielribeiro.beveragestock.domain.enums.BeverageType;
 import com.danielribeiro.beveragestock.repository.BeverageRepository;
+import com.danielribeiro.beveragestock.repository.SectionRepository;
 import com.danielribeiro.beveragestock.repository.TunRepository;
 import com.danielribeiro.beveragestock.repository.UserRepository;
 
@@ -24,6 +26,9 @@ public class BeveragestockApplication implements CommandLineRunner {
 	BeverageRepository beverageRepo;
 	@Autowired
 	TunRepository tunRepo;
+	@Autowired
+	SectionRepository sectionRepo;
+	
 	
 	@Autowired 
 	
@@ -47,6 +52,12 @@ public class BeveragestockApplication implements CommandLineRunner {
 		Tun t2 = new Tun(null, 100);
 
 		tunRepo.saveAll(Arrays.asList(t1,t2));		
+		
+		Section s1 = new Section(null, "Seção 1");
+		Section s2 = new Section(null, "Seção 2");
+		Section s3 = new Section(null, "Seção 3");
+		
+		sectionRepo.saveAll(Arrays.asList(s1,s2,s3));
 		
 	}
 
