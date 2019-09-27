@@ -7,27 +7,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.danielribeiro.beveragestock.domain.enums.BeverageType;
-
 @Entity
-public class Beverage implements Serializable {
+public class Tun implements Serializable{
+
 	private static final long serialVersionUID = 1L;
-
-	@Id 
+	
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private String name;
-	private Integer type;
-
-	public Beverage() {
+	public Integer id;
+	public Integer capacity;
+	
+	public Tun() {
 		super();
 	}
-
-	public Beverage(Integer id, String name, BeverageType type) {
+	
+	public Tun(Integer id, Integer capacity) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.type = (type == null) ? null : type.getCod();
+		this.capacity = capacity;
 	}
 
 	public Integer getId() {
@@ -38,20 +35,12 @@ public class Beverage implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getCapacity() {
+		return capacity;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public BeverageType getType() {
-		return BeverageType.toEnum(type);
-	}
-
-	public void setType(BeverageType type) {
-		this.type = type.getCod();
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
 	}
 
 	@Override
@@ -70,7 +59,7 @@ public class Beverage implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Beverage other = (Beverage) obj;
+		Tun other = (Tun) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -78,5 +67,5 @@ public class Beverage implements Serializable {
 			return false;
 		return true;
 	}
-
+	 	
 }
