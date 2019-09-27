@@ -18,7 +18,7 @@ public class SectionService {
 	
 	public Section find(Integer id) {
 		Optional<Section> obj = repo.findById(id);		
-		return obj.orElseThrow(()->new ObjectNotFoundException("Invalid ID: " + id + ", Type: " + Section.class.getName()));
+		return obj.orElseThrow(()->new ObjectNotFoundException("Object not found! ID: " + id + ", Type: " + Section.class.getName()));
 	}
 	
 	public List<Section> findAll(){

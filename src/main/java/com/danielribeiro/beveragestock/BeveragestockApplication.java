@@ -1,5 +1,6 @@
 package com.danielribeiro.beveragestock;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.danielribeiro.beveragestock.domain.Beverage;
+import com.danielribeiro.beveragestock.domain.Record;
 import com.danielribeiro.beveragestock.domain.Section;
 import com.danielribeiro.beveragestock.domain.Tun;
 import com.danielribeiro.beveragestock.domain.User;
 import com.danielribeiro.beveragestock.domain.enums.BeverageType;
 import com.danielribeiro.beveragestock.repository.BeverageRepository;
+import com.danielribeiro.beveragestock.repository.RecordRepository;
 import com.danielribeiro.beveragestock.repository.SectionRepository;
 import com.danielribeiro.beveragestock.repository.TunRepository;
 import com.danielribeiro.beveragestock.repository.UserRepository;
@@ -28,7 +31,8 @@ public class BeveragestockApplication implements CommandLineRunner {
 	TunRepository tunRepo;
 	@Autowired
 	SectionRepository sectionRepo;
-	
+	@Autowired
+	RecordRepository recordRepo;
 	
 	@Autowired 
 	
@@ -58,6 +62,14 @@ public class BeveragestockApplication implements CommandLineRunner {
 		Section s3 = new Section(null, "Seção 3");
 		
 		sectionRepo.saveAll(Arrays.asList(s1,s2,s3));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		Record r1 = new Record(null, sdf.parse("04/02/1996 20:00"));
+		Record r2 = new Record(null, sdf.parse("31/12/1989 10:30"));
+		Record r3 = new Record(null, sdf.parse("02/05/1991 18:00"));
+		Record r4 = new Record(null, sdf.parse("15/09/1987 23:20"));
+		
+		recordRepo.saveAll(Arrays.asList(r1,r2,r3,r4));
 		
 	}
 

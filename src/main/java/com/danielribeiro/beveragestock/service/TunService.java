@@ -18,7 +18,7 @@ public class TunService {
 	
 	public Tun find(Integer id){
 		Optional<Tun> obj = repo.findById(id);
-		return obj.orElseThrow(()->new ObjectNotFoundException("Invalid ID: " + id + ", Type: " + Tun.class.getName()));
+		return obj.orElseThrow(()->new ObjectNotFoundException("Object not found! ID: " + id + ", Type: " + Tun.class.getName()));
 	}
 	
 	public List<Tun> findAll(){
