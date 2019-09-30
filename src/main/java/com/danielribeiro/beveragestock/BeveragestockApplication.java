@@ -9,11 +9,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.danielribeiro.beveragestock.domain.Beverage;
+import com.danielribeiro.beveragestock.domain.BeverageRecord;
 import com.danielribeiro.beveragestock.domain.Record;
 import com.danielribeiro.beveragestock.domain.Section;
 import com.danielribeiro.beveragestock.domain.Tun;
 import com.danielribeiro.beveragestock.domain.User;
 import com.danielribeiro.beveragestock.domain.enums.BeverageType;
+import com.danielribeiro.beveragestock.repository.BeverageRecordRepository;
 import com.danielribeiro.beveragestock.repository.BeverageRepository;
 import com.danielribeiro.beveragestock.repository.RecordRepository;
 import com.danielribeiro.beveragestock.repository.SectionRepository;
@@ -33,8 +35,8 @@ public class BeveragestockApplication implements CommandLineRunner {
 	SectionRepository sectionRepo;
 	@Autowired
 	RecordRepository recordRepo;
-	
-	@Autowired 
+	@Autowired
+	BeverageRecordRepository bevrecRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BeveragestockApplication.class, args);
@@ -68,11 +70,19 @@ public class BeveragestockApplication implements CommandLineRunner {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Record r1 = new Record(null, sdf.parse("04/02/1996 20:00"),u1);
-		Record r2 = new Record(null, sdf.parse("31/12/1989 10:30"),u1);
+		Record r2 = new Record(null, sdf.parse("31/12/1989 10:30"),u2);
 		Record r3 = new Record(null, sdf.parse("02/05/1991 18:00"),u1);
-		Record r4 = new Record(null, sdf.parse("15/09/1987 23:20"),u2);
+		//Record r4 = new Record(null, sdf.parse("15/09/1987 23:20"),u2);
 		
-		recordRepo.saveAll(Arrays.asList(r1,r2,r3,r4));
+		recordRepo.saveAll(Arrays.asList(r1,r2,r3));
+		
+		BeverageRecord bv1 = new BeverageRecord(b1, r1, 300);
+		BeverageRecord bv2 = new BeverageRecord(b2, r1, 140);
+		BeverageRecord bv3 = new BeverageRecord(b2, r2, 220);
+		BeverageRecord bv4 = new BeverageRecord(b1, r3, 470);
+		
+		
+		bevrecRepo.saveAll(Arrays.asList(bv1,bv2,bv3,bv4));
 		
 	}
 

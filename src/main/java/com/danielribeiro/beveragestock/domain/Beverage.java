@@ -1,13 +1,19 @@
 package com.danielribeiro.beveragestock.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.danielribeiro.beveragestock.domain.enums.BeverageType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Beverage implements Serializable {
@@ -18,6 +24,10 @@ public class Beverage implements Serializable {
 	private Integer id;
 	private String name;
 	private Integer type;
+
+	@JsonIgnore
+	@OneToMany(mappedBy="id.beverage")
+	private Set<BeverageRecord> beveragerecord = new HashSet<>();
 
 	public Beverage() {
 		super();
@@ -30,6 +40,15 @@ public class Beverage implements Serializable {
 		this.type = (type == null) ? null : type.getCod();
 	}
 
+	@JsonIgnore
+	public List<Record> getRecord(){
+		List<Record> list = new ArrayList<Record>();
+		for(BeverageRecord x : beveragerecord) {
+			list.add(x.getRecord());
+		}
+		return list;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -54,6 +73,14 @@ public class Beverage implements Serializable {
 		this.type = type.getCod();
 	}
 
+	public Set<BeverageRecord> getBeveragerecord() {
+		return beveragerecord;
+	}
+
+	public void setBeveragerecord(Set<BeverageRecord> beveragerecord) {
+		this.beveragerecord = beveragerecord;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
