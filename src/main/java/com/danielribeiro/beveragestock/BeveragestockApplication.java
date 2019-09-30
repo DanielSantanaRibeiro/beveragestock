@@ -52,22 +52,25 @@ public class BeveragestockApplication implements CommandLineRunner {
 		
 		beverageRepo.saveAll(Arrays.asList(b1,b2));
 		
-		Tun t1 = new Tun(null, 400);
-		Tun t2 = new Tun(null, 100);
-
-		tunRepo.saveAll(Arrays.asList(t1,t2));		
-		
 		Section s1 = new Section(null, "Seção 1");
 		Section s2 = new Section(null, "Seção 2");
 		Section s3 = new Section(null, "Seção 3");
 		
 		sectionRepo.saveAll(Arrays.asList(s1,s2,s3));
 		
+		Tun t1 = new Tun(null, 400, s1);
+		Tun t2 = new Tun(null, 100, s1);
+		Tun t3 = new Tun(null, 350, s2);
+		Tun t4 = new Tun(null, 125, s3);
+
+		tunRepo.saveAll(Arrays.asList(t1,t2,t3,t4));		
+		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		Record r1 = new Record(null, sdf.parse("04/02/1996 20:00"));
-		Record r2 = new Record(null, sdf.parse("31/12/1989 10:30"));
-		Record r3 = new Record(null, sdf.parse("02/05/1991 18:00"));
-		Record r4 = new Record(null, sdf.parse("15/09/1987 23:20"));
+		Record r1 = new Record(null, sdf.parse("04/02/1996 20:00"),u1);
+		Record r2 = new Record(null, sdf.parse("31/12/1989 10:30"),u1);
+		Record r3 = new Record(null, sdf.parse("02/05/1991 18:00"),u1);
+		Record r4 = new Record(null, sdf.parse("15/09/1987 23:20"),u2);
 		
 		recordRepo.saveAll(Arrays.asList(r1,r2,r3,r4));
 		

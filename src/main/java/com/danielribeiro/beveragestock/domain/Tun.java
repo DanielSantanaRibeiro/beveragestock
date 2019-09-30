@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Tun implements Serializable{
@@ -14,17 +16,22 @@ public class Tun implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Integer id;
-	public Integer capacity;
+	private Integer id;
+	private Integer capacity;
+	
+	@ManyToOne
+	@JoinColumn(name="section_id")
+	private Section section;
 	
 	public Tun() {
 		super();
 	}
 	
-	public Tun(Integer id, Integer capacity) {
+	public Tun(Integer id, Integer capacity, Section section) {
 		super();
 		this.id = id;
 		this.capacity = capacity;
+		this.section = section;
 	}
 
 	public Integer getId() {

@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Record implements Serializable{
@@ -18,14 +22,20 @@ public class Record implements Serializable{
 	private Integer id;
 	private Date date;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	@JsonManagedReference
+	private User user;
+	
 	public Record() {
 		super();
 	}
 	
-	public Record(Integer id, Date date) {
+	public Record(Integer id, Date date, User user) {
 		super();
 		this.id = id;
 		this.date = date;		
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -42,6 +52,14 @@ public class Record implements Serializable{
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

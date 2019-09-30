@@ -1,11 +1,16 @@
 package com.danielribeiro.beveragestock.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class User implements Serializable {
@@ -18,6 +23,10 @@ public class User implements Serializable {
 	private String name;
 	private String address;
 	private String phone;
+	
+	@OneToMany(mappedBy="user")
+	@JsonBackReference
+	private List<Record> records = new ArrayList<>();
 	
 	public User() {
 		super();
@@ -56,6 +65,14 @@ public class User implements Serializable {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public List<Record> getRecords() {
+		return records;
+	}
+
+	public void setRecords(List<Record> records) {
+		this.records = records;
 	}
 
 	@Override

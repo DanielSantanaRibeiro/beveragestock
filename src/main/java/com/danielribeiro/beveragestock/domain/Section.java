@@ -1,11 +1,14 @@
 package com.danielribeiro.beveragestock.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Section implements Serializable {
@@ -16,6 +19,9 @@ public class Section implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	
+	@OneToMany(mappedBy="section")
+	private List<Tun> tuns = new ArrayList<>();
 	
 	public Section() {
 		super();
@@ -41,6 +47,14 @@ public class Section implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Tun> getTuns() {
+		return tuns;
+	}
+
+	public void setTuns(List<Tun> tuns) {
+		this.tuns = tuns;
 	}
 
 	@Override
