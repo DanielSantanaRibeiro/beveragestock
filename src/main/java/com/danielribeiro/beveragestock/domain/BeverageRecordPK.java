@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Embeddable
 public class BeverageRecordPK implements Serializable {
@@ -15,12 +15,12 @@ public class BeverageRecordPK implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="beverage_id")
-	@JsonBackReference
+	@JsonIgnore
 	private Beverage beverage;
 	
 	@ManyToOne
 	@JoinColumn(name="record_id")
-	@JsonBackReference
+	@JsonIgnore
 	private Record record;
 	
 	public BeverageRecordPK() {

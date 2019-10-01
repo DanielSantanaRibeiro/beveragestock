@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Record implements Serializable{
@@ -33,7 +32,6 @@ public class Record implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	@JsonManagedReference
 	private User user;
 	
 	@OneToMany(mappedBy="id.record")
