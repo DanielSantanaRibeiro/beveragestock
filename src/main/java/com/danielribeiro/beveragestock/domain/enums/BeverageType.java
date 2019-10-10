@@ -29,6 +29,6 @@ public enum BeverageType {
 				return x;
 			}
 		}
-		throw new IllegalArgumentException("Invalid ID: " + cod);
+		throw new IllegalArgumentException("Invalid ENUM COD: " + cod);
 	}
 }
