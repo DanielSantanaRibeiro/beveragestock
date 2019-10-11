@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.danielribeiro.beveragestock.domain.Tun;
+import com.danielribeiro.beveragestock.dto.TunDTO;
 import com.danielribeiro.beveragestock.exceptions.ObjectNotFoundException;
 import com.danielribeiro.beveragestock.repository.TunRepository;
 
@@ -24,5 +25,31 @@ public class TunService {
 	public List<Tun> findAll(){
 		List<Tun> list = repo.findAll();
 		return list;
+	}
+	
+	public Tun insert(Tun obj) {
+		obj.setId(null);
+		obj = repo.save(obj);
+		return obj;
+	}
+	
+	public Tun update(Tun obj) {
+		Optional<Tun> opt = repo.findById(obj.getId());
+		Tun newObj = opt.get();
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		repo.deleteById(id);
+	}
+	
+	private void updateData(Tun newObj, Tun obj){
+		newObj.setCapacity(obj.getCapacity());
+	}
+	
+	public Tun fromDTO(TunDTO obj) {
+		return new Tun(obj.getId(), obj.getCapacity(), null);
 	}
 }

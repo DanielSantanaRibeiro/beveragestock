@@ -43,10 +43,6 @@ public class BeverageService {
 	public void delete(Integer id) {
 		find(id);
 		repo.deleteById(id);
-		
-			
-		
-		
 	}
 	
 	private void updateData(Beverage newObj, Beverage obj) {
