@@ -28,7 +28,7 @@ public class TunService {
 	}
 	
 	public Tun insert(Tun obj) {
-		obj.setId(null);
+		obj.setId(null);		
 		obj = repo.save(obj);
 		return obj;
 	}

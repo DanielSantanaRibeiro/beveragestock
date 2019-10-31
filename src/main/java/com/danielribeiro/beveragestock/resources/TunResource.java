@@ -36,10 +36,9 @@ public class TunResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> insert(@RequestBody TunDTO objDTO){
-		Tun t = service.fromDTO(objDTO);
-		t = service.insert(t);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(t.getId()).toUri();
+	public ResponseEntity<?> insert(@RequestBody Tun obj){
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	

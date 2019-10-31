@@ -2,25 +2,18 @@ package com.danielribeiro.beveragestock.dto;
 
 import java.io.Serializable;
 
-import com.danielribeiro.beveragestock.domain.Tun;
-
 public class TunDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private Integer capacity;
-	
+	private Integer sectionId;
 	
 	public TunDTO() {
 		super();
 	}
 	
-	public TunDTO(Tun tun) {
-		super();
-		this.id = tun.getId();
-		this.capacity = tun.getCapacity();
-	}
 	public Integer getId() {
 		return id;
 	}
@@ -32,6 +25,14 @@ public class TunDTO implements Serializable {
 	}
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
+	}
+
+	public Integer getSectionId() {
+		return sectionId;
+	}
+
+	public void setSectionId(Integer sectionId) {
+		this.sectionId = sectionId;
 	}
 	
 

@@ -26,4 +26,30 @@ public class RecordService {
 		List<Record> list = repo.findAll();
 		return list;
 	}
+	
+	public Record insert(Record obj) {
+		obj.setId(null);
+		obj = repo.save(obj);
+		return obj;
+	}
+	
+	public Record update(Record obj) {
+		Optional<Record> opt = repo.findById(obj.getId());
+		Record newObj = opt.get();
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		repo.deleteById(id);
+	}
+	
+	private void updateData(Record newObj, Record obj){
+		/*newObj.set*/
+	}
+	
+	/*public Record fromDTO(RecordDTO obj) {
+		return new Record(obj.getId(), obj.getCapacity(), null);
+	}*/
 }

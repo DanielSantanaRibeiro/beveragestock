@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Tun implements Serializable{
@@ -23,7 +23,7 @@ public class Tun implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="section_id")
-	@JsonIgnore
+	@JsonBackReference
 	private Section section;
 	
 	public Tun() {
@@ -60,6 +60,7 @@ public class Tun implements Serializable{
 	public void setSection(Section section) {
 		this.section = section;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
