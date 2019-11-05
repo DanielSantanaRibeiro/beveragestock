@@ -36,10 +36,9 @@ public class SectionResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> insert (@RequestBody SectionDTO objDTO){
-		Section s = service.fromDTO(objDTO); 
-		s =	service.insert(s);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(s.getId()).toUri();
+	public ResponseEntity<?> insert (@RequestBody Section obj){		
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
