@@ -30,7 +30,7 @@ public class BeverageResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<Beverage>> findAll(){
 		List<Beverage> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}

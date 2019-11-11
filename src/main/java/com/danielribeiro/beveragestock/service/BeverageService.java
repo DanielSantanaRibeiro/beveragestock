@@ -34,8 +34,8 @@ public class BeverageService {
 	}
 	
 	public Beverage update(Beverage obj) {
-		Optional <Beverage> newOpt = repo.findById(obj.getId());
-		Beverage newObj = newOpt.get();
+		Optional <Beverage> optObj = repo.findById(obj.getId());
+		Beverage newObj = optObj.get();
 		updateData(newObj,obj);
 		return repo.save(newObj);		
 	}
@@ -48,7 +48,6 @@ public class BeverageService {
 	private void updateData(Beverage newObj, Beverage obj) {
 		newObj.setName(obj.getName());
 		newObj.setType(obj.getType());
-		
 	}
 	
 	public Beverage fromDTO(BeverageDTO obj) {

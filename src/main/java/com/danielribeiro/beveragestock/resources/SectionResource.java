@@ -30,13 +30,13 @@ public class SectionResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<Section>> findAll(){
 		List<Section> list = service.findAll();		
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> insert (@RequestBody Section obj){		
+	public ResponseEntity<Void> insert (@RequestBody Section obj){		
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

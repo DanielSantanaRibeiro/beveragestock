@@ -34,8 +34,8 @@ public class TunService {
 	}
 	
 	public Tun update(Tun obj) {
-		Optional<Tun> opt = repo.findById(obj.getId());
-		Tun newObj = opt.get();
+		Optional<Tun> optObj = repo.findById(obj.getId());
+		Tun newObj = optObj.get();
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}

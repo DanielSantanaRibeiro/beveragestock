@@ -29,13 +29,13 @@ public class RecordResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<Record>> findAll(){
 		List<Record> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> insert(@RequestBody Record obj){
+	public ResponseEntity<Void> insert(@RequestBody Record obj){
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

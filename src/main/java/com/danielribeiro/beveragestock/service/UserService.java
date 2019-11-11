@@ -31,4 +31,25 @@ public class UserService {
 		user.setId(null);
 		return repo.save(user);
 	}
+	
+	public User update(User obj) {
+		Optional<User> optObj = repo.findById(obj.getId());
+		User newObj = optObj.get();
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		repo.deleteById(id);
+	}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setAddress(obj.getAddress());
+		newObj.setPhone(obj.getPhone());
+		
+	}
+	
+	
 }
