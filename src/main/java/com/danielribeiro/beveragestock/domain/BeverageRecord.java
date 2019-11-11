@@ -45,11 +45,19 @@ public class BeverageRecord {
 		return id.getBeverage();
 	}
 	
+	public void setBeverage(Beverage beverage) {
+		id.setBeverage(beverage);
+	}
+	
 	@JsonIgnore
 	public Record getRecord() {
 		return id.getRecord();
 	}
 
+	public void setRecord(Record record) {
+		id.setRecord(record);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
